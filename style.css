@@ -1,0 +1,14 @@
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.card {
+	margin: 30px;
+	width: 100px;
+	float: left;
+}
+
+.card img {
+	width: 100%;
+}

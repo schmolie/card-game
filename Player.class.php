@@ -1,9 +1,13 @@
 <?php
 
-	class Player extends Deck {
+	class Player {
 
-		function dealCard() {
+		private $hand = [];
 
+
+
+		function dealCard($card) {
+			$this->hand[] = $card;
 		}
 
 		function drawFromDeck() {
@@ -12,6 +16,10 @@
 
 		function inPlayCard() {
 
+		}
+
+		function getHand(){
+			return $this->hand;
 		}
 	}
 
