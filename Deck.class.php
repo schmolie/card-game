@@ -13,6 +13,7 @@ session_start();
 	    		$this->deck[] = new Card($suit, $rank, $value);
 				}
 		  }
+<<<<<<< HEAD
 		  shuffle($this->deck);
 		}
 
@@ -26,6 +27,14 @@ session_start();
 
 
 			return json_encode($results, JSON_PRETTY_PRINT);
+=======
+		  return $this->deck;
+		}
+
+		function shuffleToJason() {
+    	shuffle($this->deck);
+			return '<pre>'. json_encode($this->deck, JSON_PRETTY_PRINT) .'</pre>';    	  
+>>>>>>> e80d1e7ea127654581ee097b958ecfeff4eefa5f
 		}
 
 		function topCard() {
