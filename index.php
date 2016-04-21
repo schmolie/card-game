@@ -1,7 +1,9 @@
 <?php
 
-// Start the session
-session_start();
+// If a sesssion is started don't start session. 
+if (session_id() === "" ) {
+ 	session_start();
+}
 
 spl_autoload_register(function($classname) {
 	include $classname . '.class.php';
@@ -23,6 +25,11 @@ file_put_contents("gamedata.dat", $str);
 </head>
 <body>
 
+<!-- 	<form method="post" action="register-player.php">
+		<label>Namn</label>
+		<input type="text" name="name" value="" placeholder="Skriv ditt namn">
+	</form>
+ -->
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
 </body>

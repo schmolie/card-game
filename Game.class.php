@@ -1,17 +1,22 @@
 <?php
-
-session_start();
+// If a sesssion is started don't start a session. 
+if (session_id() === "" ) {
+ 	session_start();
+}
 
 	class Game {
-
 		private $players = [];
 		private $deck;
     private $handsize = 7;
 
 		function __construct(){
 			$this->deck = new Deck;
+			$this->players[] = new Player;
+			$this->players[] = new Player;
+			$this->players[] = new Player;
+			$this->players[] = new Player;
+			// $this->players[0];
 		}
-
 
 		function checkSuit() {
 

@@ -4,9 +4,9 @@
 		include $classname . '.class.php';
 	});
 
-		// replace with unserialize
-	/*$game = new Game();
-	$deck = $game->getDeck();*/
+	// replace with unserialize
+	$game = new Game();
+	$deck = $game->getDeck();
 
 	//echo $deck->cardToJson();
 
@@ -16,8 +16,7 @@
 	$topDeckCard[]= $deck->topCard()->getPublic();
 	echo json_encode($topDeckCard);
 
-
-
+	//echo json_encode($deck->cardToJason());
 ?>
 
 

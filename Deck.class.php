@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+@session_start();
 
 	class Deck {
 		private $suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
@@ -18,19 +18,15 @@ session_start();
 
 		function cardToJason() {
 			$results = [];
-    	shuffle($this->deck);
 
 			foreach($this->deck as $card){
 				array_push($results, $card->getPublic());
 			}
-
-
-			return json_encode($results, JSON_PRETTY_PRINT);
+			return $results;
 		}
 
 		function topCard() {
 			return array_pop($this->deck);
 		}
-
 	}
 ?>
