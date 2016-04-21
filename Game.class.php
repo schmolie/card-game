@@ -8,6 +8,9 @@ if (session_id() === "" ) {
 		private $players = [];
 		private $deck;
     private $handsize = 7;
+    // (startGame?) gameState = not started 
+    // not enough players and then change to started when there is 4 players
+    // detta hämtas i game_get_started.php 
 
 		function __construct(){
 			$this->deck = new Deck;
@@ -38,16 +41,13 @@ if (session_id() === "" ) {
 			}
 		}
 
-		function startGame($players){
+		function startGame(){
       if(count($this->players) == 4) {
         for($i=0; $i < $this->handsize; $i++){
-          foreach($players as $player){
-            $this->player->getCard($this->deck->topCard());
+          foreach($this->players as $player){
+            $player->dealCard($this->deck->topCard());
           }
-           return TRUE;
         }
-
-          return FALSE;
 
           //javascript säga till att pecka i fil som peckar i methoden.
 
@@ -56,8 +56,10 @@ if (session_id() === "" ) {
         // deal7cards()
         //getCard ska ta array_push så korten ska hamna i tom ahand array.??
         //topCard ->remaining cards, när arrayen är tom
-
+       return TRUE;
       }
+
+      return FALSE;
 
 		}
 

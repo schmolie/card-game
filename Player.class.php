@@ -10,10 +10,6 @@
 			$this->hand[] = $card;
 		}
 
-		function drawFromDeck($deck) {
-
-		}
-
 		function inPlayCard() {
 
 		}
@@ -21,6 +17,7 @@
 		function getHand(){
 			return $this->hand;
 		}
+
 	}
 
 ?>

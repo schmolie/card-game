@@ -11,19 +11,29 @@
   $str = file_get_contents('gamedata.dat');
   $game = unserialize($str);
 
-  $player = $game -> addPlayer(0);
+  $game->startGame();
 
-  $player -> drawfromdeck($game->getDeck()); // få in en objeckt från deck
+  //$sessionId = $_SESSION['id'] ;
+  $cards = $game -> getHandFor(0);
+  $hand = [];
+  foreach ($cards as $card) {
+    $hand[] = $card->getPublic();
+  }
+
+  // $player -> drawFromDeck($game->getDeck()); // få in en objeckt från deck
   //get_game_started.php
 
-  $player -> getHand();
+  //$player -> getHand();
 
+  //echo $player;
+  echo json_encode($hand);
 
-  echo json_encode($player);
+  // saveState() ??? --- frysa och tyna
+  // inte frysa i game i index vid refresh startas ett nytt game
+  // get_player är en hand av kort. 
+  // För att plocka ett kort 
 
-// saveState() ??? --- frysa och tyna
-
-$deck = $_SESSION['deck'];
-
+  // spara id och namn i sessionerna 
+  // $deck = $_SESSION['deck'];
 
 ?>

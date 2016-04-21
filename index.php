@@ -10,6 +10,7 @@ spl_autoload_register(function($classname) {
 });
 
 $game = new Game;
+//saveState($game);
 $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
 
