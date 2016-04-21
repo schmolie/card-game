@@ -32,7 +32,7 @@ session_start();
 			}
 		}
 
-		function startGame{
+		function startGame(){
 
 		}
 
