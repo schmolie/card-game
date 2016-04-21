@@ -14,9 +14,4 @@
 
 	echo json_encode($hand);
 
-
-
-
-
-
 ?>

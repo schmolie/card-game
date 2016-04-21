@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+// If a sesssion is started don't start session. 
+if (session_id() === "" ) {
+ 	session_start();
+}
 
 spl_autoload_register(function($classname) {
 	include $classname . '.class.php';
