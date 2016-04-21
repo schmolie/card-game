@@ -3,7 +3,7 @@
 session_start();
 
 	class Card {
-		public $suit;
+		protected $suit;
 		public $rank;
 		public $value;
 		public $filePath;
