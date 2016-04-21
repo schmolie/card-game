@@ -3,10 +3,10 @@
 session_start();
 
 	class Card {
-		public $suit;
-		public $rank;
-		public $value;
-		public $filePath;
+		private $suit;
+		private $rank;
+		private $value;
+		private $filePath;
 
 		function __construct($suit, $rank, $value) {
 			$this->suit = $suit;
@@ -14,7 +14,7 @@ session_start();
 			$this->value = $value;
 
 			// Add images to cards
-			if ($rank){
+		if ($rank){
 				$this->filePath = "cards/" . $rank . '_of_' . $suit . '.png';
 			}
 		}
