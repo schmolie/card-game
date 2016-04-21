@@ -3,10 +3,12 @@
 session_start();
 
 	class Card {
+
 		private $suit;
 		private $rank;
 		private $value;
 		private $filePath;
+
 
 		function __construct($suit, $rank, $value) {
 			$this->suit = $suit;
