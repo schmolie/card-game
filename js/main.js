@@ -1,21 +1,18 @@
-<<<<<<< HEAD
 (function() {
+	html = $('<div class="container"/>');
 
 	$.getJSON("get_deck.php", function(data) {
 		console.log('works');
 		console.log(data);
 
 		data.forEach(function(v) {
-			console.log(v.suit);
-
+			console.log(v.rank + ' | ' + v.suit);
+			html.append('<img class="card" src="'+ v.filePath +'">');
 		});
 
 	});
 
+  $('body').append(html);
+
+
 })();
-=======
-(function($){ $(function(){
-
-
-}); })(jQuery);
->>>>>>> e80d1e7ea127654581ee097b958ecfeff4eefa5f
