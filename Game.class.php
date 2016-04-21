@@ -6,6 +6,7 @@ session_start();
 
 		private $players = [];
 		private $deck;
+    private $handsize = 7;
 
 		function __construct(){
 			$this->deck = new Deck;
@@ -32,7 +33,26 @@ session_start();
 			}
 		}
 
-		function startGame(){
+		function startGame($players){
+      if(count($this->players) == 4) {
+        for($i=0; $i < $this->handsize; $i++){
+          foreach($players as $player){
+            $this->player->getCard($this->deck->topCard());
+          }
+           return TRUE;
+        }
+
+          return FALSE;
+
+          //javascript säga till att pecka i fil som peckar i methoden.
+
+        // addPlayer() i api class add_player.php
+        // getHandFor()
+        // deal7cards()
+        //getCard ska ta array_push så korten ska hamna i tom ahand array.??
+        //topCard ->remaining cards, när arrayen är tom
+
+      }
 
 		}
 

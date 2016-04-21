@@ -10,7 +10,7 @@
 			$this->hand[] = $card;
 		}
 
-		function drawFromDeck() {
+		function drawFromDeck($deck) {
 
 		}
 

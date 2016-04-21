@@ -17,7 +17,7 @@ $_SESSION['id'] = $id;
 
 function saveState($obj) {
 	$str = serialize($obj);
-	file_get_content('gamedata.dat', $str);
+	file_put_contents('gamedata.dat', $str);
 }
 
 ?>
