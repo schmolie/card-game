@@ -26,7 +26,7 @@ file_put_contents("gamedata.dat", $str);
 </head>
 <body>
 
-<!-- 	<form method="post" action="register-player.php">
+<!-- <form method="post" action="register-player.php">
 		<label>Namn</label>
 		<input type="text" name="name" value="" placeholder="Skriv ditt namn">
 	</form>

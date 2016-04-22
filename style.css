@@ -5,10 +5,17 @@
 
 .card {
 	margin: 30px;
-	width: 100px;
+	width: 80px;
 	float: left;
 }
 
 .card img {
 	width: 100%;
+}
+
+.hand {
+	position: fixed;
+	bottom: 30px;
+	left: 10%;
+	right: 10%;
 }
