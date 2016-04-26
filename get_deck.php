@@ -4,19 +4,18 @@
 		include $classname . '.class.php';
 	});
 
-	// replace with unserialize
-	$game = new Game();
-	$deck = $game->getDeck();
+  $str = file_get_contents('gamedata.dat');
+  $game = unserialize($str);
 
-	//echo $deck->cardToJson();
+	$deck = $game->getDeck();
 
 	// Create an empty array
 	$topDeckCard = [];
+
 	// Push top card to topDeckCard array
 	$topDeckCard[]= $deck->topCard()->getPublic();
 	echo json_encode($topDeckCard);
 
-	//echo json_encode($deck->cardToJason());
 ?>
 
 
