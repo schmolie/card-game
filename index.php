@@ -35,7 +35,6 @@ file_put_contents("gamedata.dat", $str);
 	//echo 	$_SESSION['name'];
  ?> 
 
- <p><?php echo("{$_SESSION['name']}"."<br />");?></p>
 
 <form method="post" action="index.php">
 	<label>Namn</label>

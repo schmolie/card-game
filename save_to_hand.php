@@ -11,9 +11,15 @@ $game = unserialize($str);
 
 $playerId = 0; // $_SESSION
 
-$card1 = new Card( , , )
-$player = $game -> getPlayer(0) -> dealCard($topcard);
+	$suit = $_GET['suit'];
+	$rank =$_GET['rank'];
+	$value = $_GET['value'];
 
+$card1 = new Card( $suit, $rank, $value);
+// echo json_encode($card1->getPublic());
+
+$game -> getPlayer(0) -> dealCard($card1);
+// echo json_encode($game -> getPlayer(0));
 echo json_encode($game->getHandFor(0));
 
 $str = serialize($game);

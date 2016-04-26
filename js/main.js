@@ -16,7 +16,13 @@
 				var imgElem = $('<img class="card" src="'+ v.filePath +'">');
 				imgElem.click(function(ev) {
 					$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){	
-					
+						if (NotPLayable) {
+							$.getJSON("save_to_hand?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){	
+								//console.log('work'); 
+								$('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
+
+							});
+						}
 					});
 				});
 				html.append(imgElem);
@@ -28,7 +34,13 @@
 		$.getJSON("get_card.php", function(data) {
 			data.forEach(function(v) {
 				console.log(v.rank + ' | ' + v.suit);
-				$('<img class="card" src="'+ v.filePath +'">').appendTo('.container');
+				
+				$.getJSON("save_to_hand.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){	
+					console.log('work'); 
+				$('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
+
+					});
+
 			});
 		});
 	});

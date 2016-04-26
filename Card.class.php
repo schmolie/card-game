@@ -6,10 +6,10 @@ if (session_id() === "" ) {
 }
 
 	class Card {
-		private $suit;
-		private $rank;
-		private $value;
-		private $filePath;
+		public $suit;
+		public $rank;
+		public $value;
+		public $filePath;
 
 		function __construct($suit, $rank, $value) {
 			$this->suit = $suit;
@@ -17,7 +17,7 @@ if (session_id() === "" ) {
 			$this->value = $value;
 
 			// Add images to cards
-		if ($rank){
+			if ($rank){
 				$this->filePath = "cards/" . $rank . '_of_' . $suit . '.png';
 			}
 		}
