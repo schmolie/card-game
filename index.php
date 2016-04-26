@@ -40,7 +40,7 @@ file_put_contents("gamedata.dat", $str);
 <form method="post" action="index.php">
 	<label>Namn</label>
 	<!-- <input type="text" name="id" value="id" placeholder="Skriv ditt namn"> -->
-	<input type="text" name="name" value="name" placeholder="Skriv ditt namn">
+	<input type="text" name="name" value="" placeholder="Skriv ditt namn">
 	<input type="submit" value="send">
 </form>
 
