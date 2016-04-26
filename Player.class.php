@@ -4,14 +4,12 @@
 
 		private $hand = [];
 
-
-
 		function dealCard($card) {
 			$this->hand[] = $card;
 		}
 
-		function inPlayCard() {
-
+		function inPlayCard($valueFromJs) {
+	
 		}
 
 		function getHand(){

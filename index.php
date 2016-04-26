@@ -14,9 +14,6 @@ $game = new Game;
 $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
 
-// $deck1 = new Deck();
-// echo $deck1->shuffleToJason();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,11 +23,27 @@ file_put_contents("gamedata.dat", $str);
 </head>
 <body>
 
-<!-- <form method="post" action="register-player.php">
-		<label>Namn</label>
-		<input type="text" name="name" value="" placeholder="Skriv ditt namn">
-	</form>
- -->
+<?php 
+	if (isset($_POST['submit'])) {
+		$_session['id'] = $_POST['id'];
+		$_session['name'] = $_POST['name'];
+	}
+?>
+
+<?php 	
+	//$name = $_GET['name'];
+	//echo 	$_SESSION['name'];
+ ?> 
+
+ <p><?php echo("{$_SESSION['name']}"."<br />");?></p>
+
+<form method="post" action="index.php">
+	<label>Namn</label>
+	<!-- <input type="text" name="id" value="id" placeholder="Skriv ditt namn"> -->
+	<input type="text" name="name" value="" placeholder="Skriv ditt namn">
+	<input type="submit" value="send">
+</form>
+
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
 </body>
