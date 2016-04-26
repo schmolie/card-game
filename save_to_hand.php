@@ -12,7 +12,11 @@ $game = unserialize($str);
 $playerId = 0; // $_SESSION
 
 $card1 = new Card( , , )
+<<<<<<< HEAD
 $player = $game->getPlayer(0)->dealCard($topcard);
+=======
+$player = $game -> getPlayer(0) -> dealCard($topcard);
+>>>>>>> bff52be41e52a102d135b4a0b0d89e6651454eab
 
 echo json_encode($game->getHandFor(0));
 
