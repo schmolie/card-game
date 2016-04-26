@@ -12,7 +12,11 @@ $game = unserialize($str);
 $playerId = 0; // $_SESSION
 
 $card1 = new Card( , , )
+<<<<<<< HEAD
+$player = $game->getPlayer(0)->dealCard($topcard);
+=======
 $player = $game -> getPlayer(0) -> dealCard($topcard);
+>>>>>>> bff52be41e52a102d135b4a0b0d89e6651454eab
 
 echo json_encode($game->getHandFor(0));
 
@@ -20,6 +24,6 @@ $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
 
 // överföra data från javascript tll php:
-//get jason parametrar ? variable namn 
-// Vi ska skapa en metod som ska sätta kortet från deck 
+//get jason parametrar ? variable namn
+// Vi ska skapa en metod som ska sätta kortet från deck
 // till handen när spelaren kan inte använda det.
