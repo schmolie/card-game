@@ -15,6 +15,7 @@ $playerId = 0; // $_SESSION
 	$rank =$_GET['rank'];
 	$value = $_GET['value'];
 
+
 $card1 = new Card( $suit, $rank, $value);
 // echo json_encode($card1->getPublic());
 
@@ -26,6 +27,6 @@ $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
 
 // överföra data från javascript tll php:
-//get jason parametrar ? variable namn 
-// Vi ska skapa en metod som ska sätta kortet från deck 
+//get jason parametrar ? variable namn
+// Vi ska skapa en metod som ska sätta kortet från deck
 // till handen när spelaren kan inte använda det.
