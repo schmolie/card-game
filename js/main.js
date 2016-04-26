@@ -10,14 +10,24 @@
 	});
 
 	$.getJSON("get_hand.php", function(data) {
-		html = $('<section class="hand"/>');
+		var html = $('<section class="hand"/>');
 
-		data.forEach(function(v) {
-			//console.log(v.rank + ' | ' + v.suit);
-			html.append('<img class="card" src="'+ v.filePath +'">');
-		});
-		
-  		$('body').append(html);
+			data.forEach(function(v) {
+				var imgElem = $('<img class="card" src="'+ v.filePath +'">');
+				imgElem.click(function(ev) {
+					$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
+						if (NotPLayable) {
+							$.getJSON("save_to_hand?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
+								//console.log('work');
+								$('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
+
+							});
+						}
+					});
+				});
+				html.append(imgElem);
+			});
+	  	$('body').append(html);
 	});
 
 	$('body').on('click', '.backside', function(){
@@ -25,8 +35,6 @@
 			data.forEach(function(v) {
 				console.log(v.rank + ' | ' + v.suit);
 				html.append('<img class="card" src="'+ v.filePath +'">');
-
-
 			});
 		});
 	});

@@ -17,7 +17,7 @@ if (session_id() === "" ) {
 			$this->value = $value;
 
 			// Add images to cards
-		if ($rank){
+			if ($rank){
 				$this->filePath = "cards/" . $rank . '_of_' . $suit . '.png';
 			}
 		}
