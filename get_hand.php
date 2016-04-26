@@ -28,6 +28,9 @@
   //echo $player;
   echo json_encode($hand);
 
+  $str = serialize($game);
+  file_put_contents("gamedata.dat", $str);
+
   // saveState() ??? --- frysa och tyna
   // inte frysa i game i index vid refresh startas ett nytt game
   // get_player är en hand av kort. 

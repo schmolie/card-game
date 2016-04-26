@@ -16,6 +16,9 @@
 	$topDeckCard[]= $deck->topCard()->getPublic();
 	echo json_encode($topDeckCard);
 
+	$str = serialize($game);
+	file_put_contents("gamedata.dat", $str);
+
 	//echo json_encode($deck->cardToJason());
 ?>
 

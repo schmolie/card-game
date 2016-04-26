@@ -49,6 +49,8 @@ if (session_id() === "" ) {
 			//$this->checkSuit();
 		}
 
+		//metod som kan hämta en spelare
+
 		function addPlayer($name) {
 			if (count($players) < 4) {
 				return array_push($this->players, new Player) -1;
@@ -59,12 +61,12 @@ if (session_id() === "" ) {
 		}
 
 		function dealCards($handSize = 7){
-      if(count($this->players) == 4) {
-        for($i=0; $i < $handSize; $i++){
-          foreach($this->players as $player){
-            $player->dealCard($this->deck->topCard());
-          }
-        }
+	      if(count($this->players) == 4) {
+	        for($i=0; $i < $handSize; $i++) {
+	          foreach($this->players as $player) {
+	            $player->dealCard($this->deck->topCard());
+	          }
+        	}
         //javascript säga till att pecka i fil som peckar i methoden.
         // addPlayer() i api class add_player.php
         // getHandFor()
@@ -86,6 +88,15 @@ if (session_id() === "" ) {
 
 		function getGameState(){
 			return $this->gameState;
+		}
+
+		function addToHand(){
+
+			return $this->dealCard($this->deck->topCard());
+		}
+
+		function getPlayer($id) {
+			return $this->players[$id];
 		}
 
 	}
