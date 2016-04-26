@@ -1,18 +1,26 @@
 <?php
+	if (session_id() === "" ) {
+	 	session_start();
+	}
 
 	spl_autoload_register(function($classname) {
 		include $classname . '.class.php';
 	});
 
-	$suit = $_GET['suit'];
-	$rank =$_GET['rank'];
-	$value = $_GET['value'];
-
 	$str = file_get_contents('gamedata.dat');
   $game = unserialize($str);
 
-  $game->getHandFor(0)->inPlayCard($valueFromJs);
+	$suit = $_GET['suit'];
+	$rank = $_GET['rank'];
+	$value = $_GET['value'];
 
-	json_encode('')
+	$newCard = new Card($suit, $rank, $value);	
+
+  $placeCard = $game->inPlayCard($newCard);
+
+ 	echo json_encode($newCard);
+
+	$str = serialize($game);
+	file_put_contents("gamedata.dat", $str);
 
 ?>

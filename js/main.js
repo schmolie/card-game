@@ -35,4 +35,6 @@
 
 // getCard använder sig av top card för att plocka från deck.
 // getcard sparar även detta kortet i spelarens hand.
+
+// set interval -> check deck, status. 
 })();

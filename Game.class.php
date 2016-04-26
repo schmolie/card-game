@@ -6,6 +6,7 @@ if (session_id() === "" ) {
 
 	class Game {
 		private $players = [];
+		public $playedCards = [];
 		private $deck;
 		private $gameState;
 		// state = unstartade 
@@ -97,6 +98,11 @@ if (session_id() === "" ) {
 
 		function getPlayer($id) {
 			return $this->players[$id];
+		}
+
+		function inPlayCard($card) {
+			$this->playedCards[] = $card;
+			// return card object 
 		}
 
 	}

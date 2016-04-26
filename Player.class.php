@@ -8,14 +8,9 @@
 			$this->hand[] = $card;
 		}
 
-		function inPlayCard($valueFromJs) {
-	
-		}
-
 		function getHand(){
 			return $this->hand;
 		}
-
 
 	}
 

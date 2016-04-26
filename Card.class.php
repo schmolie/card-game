@@ -6,10 +6,10 @@ if (session_id() === "" ) {
 }
 
 	class Card {
-		private $suit;
-		private $rank;
-		private $value;
-		private $filePath;
+		public $suit;
+		public $rank;
+		public $value;
+		public $filePath;
 
 		function __construct($suit, $rank, $value) {
 			$this->suit = $suit;
