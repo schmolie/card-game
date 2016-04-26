@@ -1,6 +1,6 @@
 <?php
 
-// If a sesssion is started don't start session. 
+// If a sesssion is started don't start session.
 if (session_id() === "" ) {
  	session_start();
 }
@@ -16,8 +16,8 @@ file_put_contents("gamedata.dat", $str);
 
 // $deck1 = new Deck();
 // echo $deck1->shuffleToJason();
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
