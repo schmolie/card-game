@@ -8,13 +8,12 @@ $str = file_get_contents('gamedata.dat');
 $game = unserialize($str);
 
 
-$topcard = $game -> getDeck() -> topCard();
-// $player = $game->getPlayer(0)->dealCard($topcard);
 
-echo json_encode([$topcard->getPublic()]);
+// vem som har vunnit
+// vems tur?
 
-$showlast = $game->getDeck()->showTopCard();
-echo json_encode($showlast);
+
+echo json_encode( $game->getDeck()->showPlayedCard() );
 
 $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
@@ -23,6 +22,7 @@ file_put_contents("gamedata.dat", $str);
 
 
 
+
+
+
 ?>
-
-
