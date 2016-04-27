@@ -15,8 +15,8 @@
 			data.forEach(function(v) {
 				var imgElem = $('<img class="card" src="'+ v.filePath +'">');
 				imgElem.click(function(ev) {
-
 					$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
+					
 					});
 				});
 				html.append(imgElem);
@@ -31,27 +31,23 @@
 				$('<img class="card" src="'+ v.filePath +'">').appendTo('.container');
 
 				$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
-					//if (data.result == false) {
+				//if (data.result == false) {
 					$.getJSON("save_to_hand.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
-						//console.log('work');
 						$('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
 					});
 				//}
 				});
 			});
-			//html.append(imgElem);
-		});
-	  $('body').append(html);
-
+			$('body').append(html);
+		}); 
 	});
 
 // getCard använder sig av top card för att plocka från deck.
 // getcard sparar även detta kortet i spelarens hand.
 
-
-			/*	{
-					"result": true | false;
-				}*/
+/*	{
+		"result": true | false;
+}*/
 
 // set interval -> check deck, status. 
 })();

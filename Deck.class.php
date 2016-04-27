@@ -1,6 +1,8 @@
 <?php
 
-@session_start();
+	if (session_id() === "" ) {
+	 	session_start();
+	}
 
 	class Deck {
 		private $suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
