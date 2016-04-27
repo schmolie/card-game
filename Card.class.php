@@ -51,5 +51,14 @@ if (session_id() === "" ) {
 			return $res;
 		}
 
+		function isPlayable($card) { 
+			// this kommer vara topcard i detta fallet.
+			if ($card->getSuit() == $this->suit){
+				return true;
+			} elseif ($card->getRank() == $this->rank) {
+				return true;
+			} 
+			return false;
+		}
 	}
 ?>

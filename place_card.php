@@ -18,6 +18,15 @@
 
   $placeCard = $game->inPlayCard($newCard);
 
+  //variabel som sparar resultatet av att ha försökt placera ett kort
+
+  /*
+	if isCrazy8($newcard) ersätt det senaste kortet. else
+	showTopCard()->isPlayable($newcard)
+  */
+
+  //$res = ["result" => variabelen]
+
  	echo json_encode($newCard);
 
 	$str = serialize($game);

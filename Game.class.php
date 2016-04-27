@@ -92,7 +92,6 @@ if (session_id() === "" ) {
 		}
 
 		function addToHand(){
-
 			return $this->dealCard($this->deck->topCard());
 		}
 
