@@ -2,9 +2,9 @@
 
 	$.getJSON("get_deck.php", function(data) {
 		html = $('<div class="container"/>');
-		data.forEach(function(v) {
-			html.append('<img class="card" src="'+ v.filePath +'">');
-		});
+		// data.forEach(function(v) {
+		// 	html.append('<img class="card" src="'+ v.filePath +'">');
+		// });
 		html.append('<img class="card backside" src="cards/backsidecard.png">');
 		$('body').append(html);
 	});
@@ -48,6 +48,19 @@
 		}); 
 	});
 
+
+function checkGameState() {
+	$.getJSON("game_state.php", function(data) {
+		console.log(data);
+	});
+
+}
+
+setInterval(checkGameState, 3000);
+
+
+
+
 // getCard använder sig av top card för att plocka från deck.
 // getcard sparar även detta kortet i spelarens hand.
 
@@ -55,5 +68,5 @@
 		"result": true | false;
 }*/
 
-// set interval -> check deck, status. 
+// set interval -> check deck, status.
 })();

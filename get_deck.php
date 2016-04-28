@@ -3,23 +3,18 @@
 	spl_autoload_register(function($classname) {
 		include $classname . '.class.php';
 	});
-
-	// replace with unserialize
-	$game = new Game();
-	$deck = $game->getDeck();
-
-	//echo $deck->cardToJson();
+	
+	$str = file_get_contents('gamedata.dat');
+	$game = unserialize($str);
 
 	// Create an empty array
-	$topDeckCard = [];
+	$playedCards = [];
 	// Push top card to topDeckCard array
-	$topDeckCard[]= $deck->topCard()->getPublic();
-	echo json_encode($topDeckCard);
+	$playedCards[]= $game -> getDeck()->showTopCard()->getPublic();
+	echo json_encode($playedCards);
 
 	$str = serialize($game);
 	file_put_contents("gamedata.dat", $str);
-
-	//echo json_encode($deck->cardToJason());
 ?>
 
 

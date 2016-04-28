@@ -4,8 +4,6 @@
 
 		private $hand = [];
 
-
-
 		function dealCard($card) {
 			$this->hand[] = $card;
 		}

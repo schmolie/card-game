@@ -25,8 +25,8 @@ if (session_id() === "" ) {
 			$this->gameState->winner = 'none';
 			$this->gameState->turn = false;
 
-
 			$this->deck = new Deck;
+			$this->playedCards[] = $this->deck->topCard();
 			$this->players[] = new Player;
 			$this->players[] = new Player;
 			$this->players[] = new Player;
@@ -94,5 +94,9 @@ if (session_id() === "" ) {
 			// return card object 
 		}
 
+		function showPlayedCard(){
+			$length = count($this->playedCards);
+			return $this->playedCards[$length - 1];
+		}
 	}
 ?>

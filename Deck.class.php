@@ -1,5 +1,4 @@
 <?php
-
 	if (session_id() === "" ) {
 	 	session_start();
 	}
@@ -18,17 +17,13 @@
 		  shuffle($this->deck);
 		}
 
-		function cardToJason() {
-			$results = [];
-
-			foreach($this->deck as $card){
-				array_push($results, $card->getPublic());
-			}
-			return $results;
-		}
-
 		function topCard() {
 			return array_pop($this->deck);
+		}
+
+		function showTopCard() {
+			$length = count($this->deck);
+			return $this->deck[$length - 1];
 		}
 	}
 ?>
