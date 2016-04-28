@@ -2,9 +2,9 @@
 
 	$.getJSON("get_deck.php", function(data) {
 		html = $('<div class="container"/>');
-		data.forEach(function(v) {
-			html.append('<img class="card" src="'+ v.filePath +'">');
-		});
+		// data.forEach(function(v) {
+		// 	html.append('<img class="card" src="'+ v.filePath +'">');
+		// });
 		html.append('<img class="card backside" src="cards/backsidecard.png">');
 		$('body').append(html);
 	});

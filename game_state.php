@@ -13,7 +13,7 @@ $game = unserialize($str);
 // vems tur?
 
 
-echo json_encode( $game->getDeck()->showPlayedCard() );
+echo json_encode( $game->showPlayedCard() );
 
 $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
