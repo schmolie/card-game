@@ -34,23 +34,9 @@ if (session_id() === "" ) {
 			// $this->players[0];
 		}
 
-		function checkSuit() {
-			 
+		function crazyEights($card) {
+      // if()
 		}
-
-		function checkRank() {
-
-		}
-
-		function crazyEights() {
-
-		}
-
-		function playableCard() {
-			//$this->checkSuit();
-		}
-
-		//metod som kan hämta en spelare
 
 		function addPlayer($name) {
 			if (count($players) < 4) {
