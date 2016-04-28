@@ -5,7 +5,7 @@ if (session_id() === "" ) {
  	session_start();
 }
 
-	class Card {
+	class Card /* implements JsonSerializable */{
 		public $suit;
 		public $rank;
 		public $value;
@@ -60,5 +60,15 @@ if (session_id() === "" ) {
 			} 
 			return false;
 		}
+/*
+		function jsonserialize() {
+			return array(
+				'suit' => $this->suit, 
+				'rank' => $this->rank, 
+				'value' => $this->value, 
+				'filepath' => $this->filePath  
+			);
+		}*/
+
 	}
 ?>

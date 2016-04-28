@@ -16,6 +16,9 @@
 				var imgElem = $('<img class="card" src="'+ v.filePath +'">');
 				imgElem.click(function(ev) {
 					$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
+						
+					console.log(data.result);
+	
 					
 					});
 				});
@@ -31,6 +34,9 @@
 				$('<img class="card" src="'+ v.filePath +'">').appendTo('.container');
 
 				$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
+
+					console.log(data.result);
+					
 				//if (data.result == false) {
 					$.getJSON("save_to_hand.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(data){
 						$('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');

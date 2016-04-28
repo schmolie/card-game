@@ -7,7 +7,7 @@ if (session_id() === "" ) {
 	class Game {
 		private $players = [];
 		public $playedCards = [];
-		private $deck;
+		public $deck;
 		private $gameState;
 		// state = unstartade 
 		// winner = none
@@ -34,8 +34,12 @@ if (session_id() === "" ) {
 			// $this->players[0];
 		}
 
-		function crazyEights($card) {
-      // if()
+		function isCrazyEights($card) {
+      if($card->getRank() == 8) {
+      	return true;
+      } else {
+      	return false;
+      }
 		}
 
 		function addPlayer($name) {
