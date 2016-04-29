@@ -52,13 +52,14 @@ if (session_id() === "" ) {
 		}
 
 		function isPlayable($card) { 
-			// this kommer vara topcard i detta fallet.
+			// this kommer vara topcard i detta fallet.-->playedcard i game.classe.php
 			if ($card->getSuit() == $this->suit){
 				return true;
 			} elseif ($card->getRank() == $this->rank) {
 				return true;
 			} 
 			return false;
+			// gick det och vinna? kolla alla spelares händer 
 		}
 /*
 		function jsonserialize() {

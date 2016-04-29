@@ -13,8 +13,21 @@ if (session_id() === "" ) {
 		// winner = none
 		// turn = 
 
+		/*
 
-   	// private $handsize = 7;
+			{
+				"playedCard: {
+					"rank": 4,
+					"suit": 4,
+					"value": 4,
+				},
+				"winner": "none" | id
+				"turn": 2
+			}
+
+			// playCard 
+			*/
+
     // (startGame?) gameState = not started 
     // not enough players and then change to started when there is 4 players
     // detta hämtas i game_get_started.php 
@@ -34,12 +47,19 @@ if (session_id() === "" ) {
 			// $this->players[0];
 		}
 
+		function addToPlayedCards($card) {
+			$this->playedCard[] = $card;
+		}
+
 		function isCrazyEights($card) {
       if($card->getRank() == 8) {
+      	//$this->playedCards[] = $card;
       	return true;
       } else {
       	return false;
       }
+			// gick det och vinna? kolla alla spelares händer 
+			// antingen i game eller api mtod playCard
 		}
 
 		function addPlayer($name) {
@@ -93,7 +113,7 @@ if (session_id() === "" ) {
 			$this->playedCards[] = $card;
 			// return card object 
 		}
-
+    // hämtar korten som står överst på kortleken.
 		function showPlayedCard(){
 			$length = count($this->playedCards);
 			return $this->playedCards[$length - 1];

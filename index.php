@@ -30,21 +30,25 @@ file_put_contents("gamedata.dat", $str);
 	if (isset($_POST['submit'])) {
 		$_session['id'] = $_POST['id'];
 		$_session['name'] = $_POST['name'];
+		//$name = $_GET['name'];
+		//echo 	$_SESSION['name'];
 	}
 ?>
-
-<?php 	
-	//$name = $_GET['name'];
-	//echo 	$_SESSION['name'];
- ?> 
-
-
+<!-- 
 <form method="post" action="index.php">
 	<label>Namn</label>
-	<!-- <input type="text" name="id" value="id" placeholder="Skriv ditt namn"> -->
+	<input type="text" name="id" value="id" placeholder="Skriv ditt namn">
 	<input type="text" name="name" value="" placeholder="Skriv ditt namn">
 	<input type="submit" value="send">
 </form>
+ -->
+<section class="container">
+ 	<img id="backside" class="card backside" src="cards/backsidecard.png">
+ 	<img id="topcard" class="card" src="cards/backsidecard.png">
+ 	<div class="hand">
+ 		
+ 	</div>
+</section>
 
 
 	<script src="js/jquery.js"></script>

@@ -1,4 +1,5 @@
 <?php
+//plockar ut och skickar till JSON.
 
 spl_autoload_register(function($classname) {
 		include $classname . '.class.php';

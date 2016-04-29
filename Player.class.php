@@ -8,7 +8,6 @@
 			$this->hand[] = $card;
 		}
 
-
 		function getHand(){
 			return $this->hand;
 		}

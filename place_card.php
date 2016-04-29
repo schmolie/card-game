@@ -1,5 +1,4 @@
 <?php
-	// $placeCard = $game->inPlayCard($newCard);
 	if (session_id() === "" ) {
 	 	session_start();
 	}
@@ -18,28 +17,26 @@
 	$newCard = new Card($suit, $rank, $value);	
 
   $isCrazyEights = $game->isCrazyEights($newCard);
-  $res = ["result" => $isCrazyEights];
- // $isPlayable = $game->isPlayable($newCard); // inPlayCard()
+  $isPlayable = $game->showPlayedCard()->isPlayable($newCard);
+  $res = ["eight" => $isCrazyEights, "playable" => $isPlayable];
+  $eight = $res['eight'];
+  $playable = $res['playable'];
 
-	if ($res['result'] == true) {
+	if ($eight == true) {
+		$game->addToPlayedCards($newCard);
  		echo json_encode($res); // returns true
-	} else {
- 		echo json_encode($res); // returns false
-	}
 
-	// echo "<script>console.log(". json_encode($res) .")</script>"; 
+	} elseif ($playable == true) {
+
+		$game->addToPlayedCards($newCard);
+ 		echo json_encode($res); // returns false
+
+	} else {
+		echo json_encode($res);
+	}
 
 	$str = serialize($game);
 	file_put_contents("gamedata.dat", $str);
-
-
-// variabel som sparar resultatet av att ha försökt placera ett kort
-
-  /*
-	if isCrazy8($newcard) ersätt det senaste kortet. else
-	showTopCard()->isPlayable($newcard)
-  */
-
 
 ?>
 
