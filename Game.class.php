@@ -1,5 +1,5 @@
 <?php
-// If a sesssion is started don't start a session. 
+// If a sesssion is started don't start a session.
 if (session_id() === "" ) {
  	session_start();
 }
@@ -9,9 +9,9 @@ if (session_id() === "" ) {
 		public $playedCards = [];
 		public $deck;
 		private $gameState;
-		// state = unstartade 
+		// state = unstartade
 		// winner = none
-		// turn = 
+		// turn =
 
 		/*
 
@@ -25,12 +25,12 @@ if (session_id() === "" ) {
 				"turn": 2
 			}
 
-			// playCard 
+			// playCard
 			*/
 
-    // (startGame?) gameState = not started 
+    // (startGame?) gameState = not started
     // not enough players and then change to started when there is 4 players
-    // detta hämtas i game_get_started.php 
+    // detta hämtas i game_get_started.php
 
 		function __construct(){
 			$this->gameState = new stdClass;
@@ -48,7 +48,7 @@ if (session_id() === "" ) {
 		}
 
 		function addToPlayedCards($card) {
-			$this->playedCard[] = $card;
+			$this->playedCards[] = $card;
 		}
 
 		function isCrazyEights($card) {
@@ -58,7 +58,7 @@ if (session_id() === "" ) {
       } else {
       	return false;
       }
-			// gick det och vinna? kolla alla spelares händer 
+			// gick det och vinna? kolla alla spelares händer
 			// antingen i game eller api mtod playCard
 		}
 
@@ -111,7 +111,7 @@ if (session_id() === "" ) {
 
 		function inPlayCard($card) {
 			$this->playedCards[] = $card;
-			// return card object 
+			// return card object
 		}
     // hämtar korten som står överst på kortleken.
 		function showPlayedCard(){
