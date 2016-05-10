@@ -1,6 +1,11 @@
 <?php
 //plockar ut och skickar till JSON.
 
+
+  if (session_id() === "" ) {
+    session_start();
+  }
+
 spl_autoload_register(function($classname) {
 		include $classname . '.class.php';
 });
