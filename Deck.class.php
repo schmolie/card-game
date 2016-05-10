@@ -25,5 +25,9 @@
 			$length = count($this->deck);
 			return $this->deck[$length - 1];
 		}
+
+		public function getSuits() {
+			return $this->suit;
+		}
 	}
 ?>

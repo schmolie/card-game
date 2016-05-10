@@ -4,6 +4,17 @@
 		$( '#topcard' ).replaceWith('<img id="topcard" class="card" src="'+ filePath +'">');
 	}
 
+	$('.suits').on('click', function(){
+
+	});
+
+	function chooseSuit(){
+		$('.suits').show();
+
+	}
+
+
+
 	function addToHand(data) {
 
 			var imgElem = $('<img class="card" src="'+ data.filePath +'">').appendTo('.hand');
@@ -14,6 +25,7 @@
 					if (isPlayable.eight === true || isPlayable.playable === true) {
 
 						replaceTopCard(data.filePath);
+						chooseSuit();
 
 					} else {
 						$('.statusmsgs').show().delay(2000).fadeOut();
@@ -24,7 +36,6 @@
 	}
 
 	$('#join').on('click', function() {
-
 		$.getJSON('register-player.php?name=fake', function() {
 			console.log('join the game');
 
@@ -39,12 +50,19 @@
 
 
 
+
 	// Card from deck:
 	$('body').on('click', '.backside', function(){
 
 		$.getJSON("get_card.php", function(cardData) {
 
-				$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value, function(playableData){
+				var newSuit;
+
+				if (cardData.rank == 8) {
+					newSuit = prompt('choose suit', '');
+				}
+
+				$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value + "&changeSuit=" + newSuit, function(playableData){
 					console.log('CrazyEight: ', playableData.eight, 'Rank || suit: ', playableData.playable);
 						// Place card to deck:
 						if (playableData.eight == true || playableData.playable == true) {
@@ -68,40 +86,38 @@
 	$('#deal').on('click', function() {
 		$.getJSON('deal_cards.php', function() {
 
-	// 		// Get players' hand:
-	// 		$.getJSON("get_hand.php", function(data) {
-	// 			data.forEach(function(v) {
-	// 				addToHand(v);
-	// 			});
-	// 		});
-
-
-
-//Get players' hand:
-	$.getJSON("get_hand.php", function(data) {
-		data.forEach(function(v) {
-			var imgElem = $('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
-
-			imgElem.click(function() {
-				$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
-
-					// Place card from hand to deck:
-					if (isPlayable.eight == true || isPlayable.playable == true) {
-
-						replaceTopCard(v.filePath);
-
-					} else {
-						// Not playable card:
-						$('.statusmsgs').show().delay(2000).fadeOut();
-					}
-
+			// Get players' hand:
+			$.getJSON("get_hand.php", function(data) {
+				data.forEach(function(v) {
+					addToHand(v);
 				});
 			});
 		});
 	});
 
-		});
-	});
+
+// Get players' hand:
+	// $.getJSON("get_hand.php", function(data) {
+	// 	data.forEach(function(v) {
+	// 		var imgElem = $('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
+
+	// 		imgElem.click(function() {
+	// 			$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
+
+	// 				// Place card from hand to deck:
+	// 				if (isPlayable.eight == true || isPlayable.playable == true) {
+
+	// 					replaceTopCard(v.filePath);
+
+	// 				} else {
+	// 					// Not playable card:
+	// 					$('.statusmsgs').show().delay(2000).fadeOut();
+	// 				}
+
+	// 			});
+	// 		});
+	// 	});
+	// });
 
 
 	function checkGameState() {
@@ -111,7 +127,14 @@
 			data.hand.forEach(function(v){
 				var imgEl = $('<img class="card" src="'+ v.filePath +'">');
 				imgEl.click(function(ev) {
-						$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
+
+						var newSuit;
+
+						if (v.rank == 8) {
+							newSuit = prompt('choose suit', '');
+						}
+
+						$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value + "&changeSuit=" + newSuit, function(isPlayable){
 
 							if (isPlayable.eight === true || isPlayable.playable === true) {
 								replaceTopCard(v.filePath);
@@ -130,10 +153,6 @@
 
 			console.log(data.hand);
       console.log(data.turn, data.id);
-
-      if (data.id === true) {
-      	$('.turn').show();
-      }
 
 			replaceTopCard(data.playedCard.filePath);
 

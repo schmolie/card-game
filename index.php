@@ -61,7 +61,6 @@ spl_autoload_register(function($classname) {
  	<img id="topcard" class="card" src="cards/backsidecard.png">
  	<div class="hand"></div>
  	<div class="statusmsgs">It's not playable</div>
- 	<div class="statusmsgs">It's your turn!</div>
 
 </section>
 

@@ -25,7 +25,12 @@ $str = serialize($game);
 file_put_contents("gamedata.dat", $str);
 
 
-
+// Om handet är slut hos en person då är spelet slut.
+// Är det inte ens tur får man inte ta kortet från deck.
+// Man får välja 8:ans suit .
+// Felmeddelandet.
+// Vems tur är det.
+// Räkna upp poängen.
 
 
 ?>

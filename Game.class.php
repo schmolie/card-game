@@ -9,6 +9,8 @@ if (session_id() === "" ) {
 		public $playedCards = [];
 		public $deck;
 		private $gameState;
+		public $suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
+		public $suit = null;
 		// state = unstartade
 		// winner = none
 		// turn =
@@ -61,12 +63,11 @@ if (session_id() === "" ) {
     }
 
     private function nextPlayer() {
-      if ($this->gameState->turn === 3) {
+      if ($this->gameState->turn === 1) {
         $this->gameState->turn = 0;
       } else {
         $this->gameState->turn++;
       }
-
     }
 
     function getPlayerTurn(){
@@ -86,8 +87,16 @@ if (session_id() === "" ) {
       } else {
       	return false;
       }
-			// gick det och vinna? kolla alla spelares händer
-			// antingen i game eller api mtod playCard
+		}
+
+		//place_card.php
+		function changeSuit($suit){
+			$this->suit = $suit;
+
+		}
+
+		function getNewSuit() {
+			return $this->suit;
 		}
 
 		function addPlayer($name) {
@@ -102,13 +111,12 @@ if (session_id() === "" ) {
 		}
 
 		function dealCards($handSize = 7){
-	      if(count($this->players) == 4) { // fyra splear??
+	      if(count($this->players) == 2) { // fyra splear??
 	        for($i=0; $i < $handSize; $i++) {
 	          foreach($this->players as $player) {
 	            $player->addToHand($this->deck->topCard());
 	          }
         	}
-
        	return TRUE;
       }
       return FALSE;
@@ -125,6 +133,8 @@ if (session_id() === "" ) {
 		function getGameState(){
 			return $this->gameState;
 		}
+
+
 
 		function addToHand($card){
 			return $this->addToHand($card);
