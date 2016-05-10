@@ -1,6 +1,6 @@
 <?php
 
-// If a sesssion is started don't start session. 
+// If a sesssion is started don't start session.
 if (session_id() === "" ) {
  	session_start();
 }
@@ -51,23 +51,29 @@ if (session_id() === "" ) {
 			return $res;
 		}
 
-		function isPlayable($card) { 
+		function isPlayable($card) {
 			// this kommer vara topcard i detta fallet.-->playedcard i game.classe.php
 			if ($card->getSuit() == $this->suit){
 				return true;
 			} elseif ($card->getRank() == $this->rank) {
 				return true;
-			} 
+			}
 			return false;
-			// gick det och vinna? kolla alla spelares händer 
+			// gick det och vinna? kolla alla spelares händer
+		}
+
+		function isSame($c) {
+
+			return ($c->getSuit() === $this->suit && $c->getRank() === $this->rank);
+
 		}
 /*
 		function jsonserialize() {
 			return array(
-				'suit' => $this->suit, 
-				'rank' => $this->rank, 
-				'value' => $this->value, 
-				'filepath' => $this->filePath  
+				'suit' => $this->suit,
+				'rank' => $this->rank,
+				'value' => $this->value,
+				'filepath' => $this->filePath
 			);
 		}*/
 

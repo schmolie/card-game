@@ -26,7 +26,7 @@ file_put_contents("gamedata.dat", $str);
 </head>
 <body>
 
-<?php 
+<?php
 	if (isset($_POST['submit'])) {
 		$_session['id'] = $_POST['id'];
 		$_session['name'] = $_POST['name'];
@@ -34,7 +34,7 @@ file_put_contents("gamedata.dat", $str);
 		//echo 	$_SESSION['name'];
 	}
 ?>
-<!-- 
+<!--
 <form method="post" action="index.php">
 	<label>Namn</label>
 	<input type="text" name="id" value="id" placeholder="Skriv ditt namn">
@@ -45,9 +45,8 @@ file_put_contents("gamedata.dat", $str);
 <section class="container">
  	<img id="backside" class="card backside" src="cards/backsidecard.png">
  	<img id="topcard" class="card" src="cards/backsidecard.png">
- 	<div class="hand">
- 		
- 	</div>
+ 	<div class="hand"></div>
+ 	<div class="statusmsgs">It's not playable</div>
 </section>
 
 

@@ -10,26 +10,25 @@
 	$str = file_get_contents('gamedata.dat');
   $game = unserialize($str);
 
+
 	$suit = $_GET['suit'];
 	$rank = $_GET['rank'];
 	$value = $_GET['value'];
 
-	$newCard = new Card($suit, $rank, $value);	
+	$newCard = new Card($suit, $rank, $value);
 
   $isCrazyEights = $game->isCrazyEights($newCard);
   $isPlayable = $game->showPlayedCard()->isPlayable($newCard);
-  $res = ["eight" => $isCrazyEights, "playable" => $isPlayable];
+  //$hand = $game->getPlayer($_SESSION["id"])->getHand();
+  $hand = $game->getPlayer(0)->getHand();
+  $res = ["eight" => $isCrazyEights, "playable" => $isPlayable, "hand" => $hand];
   $eight = $res['eight'];
   $playable = $res['playable'];
 
-	if ($eight == true) {
+	if ($eight == true || $playable == true) {
 		$game->addToPlayedCards($newCard);
+		$game->getPlayer(0)->removeFromHand($newCard);
  		echo json_encode($res); // returns true
-
-	} elseif ($playable == true) {
-
-		$game->addToPlayedCards($newCard);
- 		echo json_encode($res); // returns false
 
 	} else {
 		echo json_encode($res);
@@ -38,5 +37,9 @@
 	$str = serialize($game);
 	file_put_contents("gamedata.dat", $str);
 
+
+
 ?>
+
+
 

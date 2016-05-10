@@ -40,11 +40,7 @@ if (session_id() === "" ) {
 
 			$this->deck = new Deck;
 			$this->playedCards[] = $this->deck->topCard();
-			$this->players[] = new Player;
-			$this->players[] = new Player;
-			$this->players[] = new Player;
-			$this->players[] = new Player;
-			// $this->players[0];
+
 		}
 
 		function addToPlayedCards($card) {
@@ -75,7 +71,7 @@ if (session_id() === "" ) {
 	      if(count($this->players) == 4) {
 	        for($i=0; $i < $handSize; $i++) {
 	          foreach($this->players as $player) {
-	            $player->dealCard($this->deck->topCard());
+	            $player->addToHand($this->deck->topCard());
 	          }
         	}
         //javascript säga till att pecka i fil som peckar i methoden.
@@ -101,9 +97,11 @@ if (session_id() === "" ) {
 			return $this->gameState;
 		}
 
-		function addToHand(){
-			return $this->dealCard($this->deck->topCard());
+		function addToHand($card){
+			// return $this->addToHand($this->deck->topCard());
+			return $this->addToHand($card);
 		}
+
 
 		function getPlayer($id) {
 			return $this->players[$id];
@@ -120,3 +118,4 @@ if (session_id() === "" ) {
 		}
 	}
 ?>
+
