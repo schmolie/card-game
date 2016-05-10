@@ -68,38 +68,40 @@
 	$('#deal').on('click', function() {
 		$.getJSON('deal_cards.php', function() {
 
-			// Get players' hand:
-			$.getJSON("get_hand.php", function(data) {
-				data.forEach(function(v) {
-					addToHand(v);
+	// 		// Get players' hand:
+	// 		$.getJSON("get_hand.php", function(data) {
+	// 			data.forEach(function(v) {
+	// 				addToHand(v);
+	// 			});
+	// 		});
+
+
+
+//Get players' hand:
+	$.getJSON("get_hand.php", function(data) {
+		data.forEach(function(v) {
+			var imgElem = $('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
+
+			imgElem.click(function() {
+				$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
+
+					// Place card from hand to deck:
+					if (isPlayable.eight == true || isPlayable.playable == true) {
+
+						replaceTopCard(v.filePath);
+
+					} else {
+						// Not playable card:
+						$('.statusmsgs').show().delay(2000).fadeOut();
+					}
+
 				});
 			});
 		});
 	});
 
-
-// Get players' hand:
-	// $.getJSON("get_hand.php", function(data) {
-	// 	data.forEach(function(v) {
-	// 		var imgElem = $('<img class="card" src="'+ v.filePath +'">').appendTo('.hand');
-
-	// 		imgElem.click(function() {
-	// 			$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
-
-	// 				// Place card from hand to deck:
-	// 				if (isPlayable.eight == true || isPlayable.playable == true) {
-
-	// 					replaceTopCard(v.filePath);
-
-	// 				} else {
-	// 					// Not playable card:
-	// 					$('.statusmsgs').show().delay(2000).fadeOut();
-	// 				}
-
-	// 			});
-	// 		});
-	// 	});
-	// });
+		});
+	});
 
 
 	function checkGameState() {
@@ -128,6 +130,10 @@
 
 			console.log(data.hand);
       console.log(data.turn, data.id);
+
+      if (data.id === true) {
+      	$('.turn').show();
+      }
 
 			replaceTopCard(data.playedCard.filePath);
 

@@ -61,7 +61,7 @@ if (session_id() === "" ) {
     }
 
     private function nextPlayer() {
-      if ($this->gameState->turn === 1) {
+      if ($this->gameState->turn === 3) {
         $this->gameState->turn = 0;
       } else {
         $this->gameState->turn++;
@@ -102,7 +102,7 @@ if (session_id() === "" ) {
 		}
 
 		function dealCards($handSize = 7){
-	      if(count($this->players) == 2) { // fyra splear??
+	      if(count($this->players) == 4) { // fyra splear??
 	        for($i=0; $i < $handSize; $i++) {
 	          foreach($this->players as $player) {
 	            $player->addToHand($this->deck->topCard());

@@ -30,6 +30,8 @@ body {
 	margin-left: 0px;
 }
 
-.statusmsgs {
+.statusmsgs,
+.turn
+ {
 	display: none;
 }
