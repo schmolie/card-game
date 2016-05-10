@@ -12,9 +12,10 @@ if (session_id() === "" ) {
 		// state = unstartade
 		// winner = none
 		// turn =
+    //public $name;
 
-		/*
 
+/*
 			{
 				"playedCard: {
 					"rank": 4,
@@ -23,6 +24,8 @@ if (session_id() === "" ) {
 				},
 				"winner": "none" | id
 				"turn": 2
+
+        json-metod
 			}
 
 			// playCard
@@ -34,20 +37,52 @@ if (session_id() === "" ) {
 
 		function __construct(){
 			$this->gameState = new stdClass;
-			$this->gameState->state = 'unstarted';
-			$this->gameState->winner = 'none';
-			$this->gameState->turn = false;
+			$this->gameState->state = 'unstarted'; // ????
+			$this->gameState->winner = null;
+			$this->gameState->turn = 0;
 
 			$this->deck = new Deck;
 			$this->playedCards[] = $this->deck->topCard();
-			$this->players[] = new Player;
-			$this->players[] = new Player;
-			$this->players[] = new Player;
-			$this->players[] = new Player;
+			// $this->players[] = new Player;
+			// $this->players[] = new Player;
+			// $this->players[] = new Player;
+			// $this->players[] = new Player;
 			// $this->players[0];
 		}
 
+    public function endGame(){
+      $index=0;
+       foreach ($this->players as $player){
+          if (count($player->getHand()) == 0){
+            return $index;
+          }
+       }
+       return null;
+    }
+
+    function getWinner(){
+      return $this->gameState->winner;
+    }
+
+
+
+
+    private function nextPlayer() {
+      if ($this->gameState->turn === 1) { //Egentligen 3 (Tobias, du sabbar vår kod)
+        $this->gameState->turn = 0;
+      } else {
+        $this->gameState->turn++;
+      }
+
+    }
+
+    function getPlayerTurn(){
+      return $this->gameState->turn;
+    }
+
 		function addToPlayedCards($card) {
+      $this->gameState->winner = $this->endGame();
+      $this->nextPlayer();
 			$this->playedCards[] = $card;
 		}
 
@@ -63,8 +98,10 @@ if (session_id() === "" ) {
 		}
 
 		function addPlayer($name) {
-			if (count($players) < 4) {
-				return array_push($this->players, new Player) -1;
+			if (count($this->players) < 4) {
+        array_push($this->players, new Player);
+        $numPlayers = count($this->players);
+				return $numPlayers -1;
 			} else {
 				return NULL;
 			}
@@ -72,7 +109,7 @@ if (session_id() === "" ) {
 		}
 
 		function dealCards($handSize = 7){
-	      if(count($this->players) == 4) {
+	      if(count($this->players) == 2) { // fyra splear??
 	        for($i=0; $i < $handSize; $i++) {
 	          foreach($this->players as $player) {
 	            $player->dealCard($this->deck->topCard());

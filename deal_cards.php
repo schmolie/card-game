@@ -1,0 +1,29 @@
+<?php
+
+  if (session_id() === "" ) {
+    session_start();
+  }
+
+  spl_autoload_register(function($classname) {
+    include $classname . '.class.php';
+  });
+
+  $sessionId = $_SESSION['id'];
+
+  $str = file_get_contents('gamedata.dat');
+  $game = unserialize($str);
+
+  $game->dealCards();
+
+  $cards = $game -> getHandFor($sessionId);
+  $hand = [];
+  foreach ($cards as $card) {
+    $hand[] = $card->getPublic();
+  }
+
+  echo json_encode($hand);
+
+  $str = serialize($game);
+  file_put_contents("gamedata.dat", $str);
+
+?>

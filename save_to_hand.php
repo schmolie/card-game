@@ -11,7 +11,7 @@ spl_autoload_register(function($classname) {
 $str = file_get_contents('gamedata.dat');
 $game = unserialize($str);
 
-$playerId = 0; // $_SESSION
+$playerId = $_SESSION["id"];
 
 	$suit = $_GET['suit'];
 	$rank =$_GET['rank'];
@@ -21,9 +21,9 @@ $playerId = 0; // $_SESSION
 $card1 = new Card( $suit, $rank, $value);
 // echo json_encode($card1->getPublic());
 
-$game -> getPlayer(0) -> dealCard($card1);
+$game -> getPlayer($playerId) -> dealCard($card1);
 // echo json_encode($game -> getPlayer(0));
-echo json_encode($game->getHandFor(0));
+echo json_encode($game->getHandFor($playerId));
 
 $str = serialize($game);
 file_put_contents("gamedata.dat", $str);

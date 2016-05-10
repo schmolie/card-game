@@ -14,26 +14,43 @@
 	$rank = $_GET['rank'];
 	$value = $_GET['value'];
 
-	$newCard = new Card($suit, $rank, $value);	
+	$newCard = new Card($suit, $rank, $value);
 
-  $isCrazyEights = $game->isCrazyEights($newCard);
-  $isPlayable = $game->showPlayedCard()->isPlayable($newCard);
-  $res = ["eight" => $isCrazyEights, "playable" => $isPlayable];
-  $eight = $res['eight'];
-  $playable = $res['playable'];
 
-	if ($eight == true) {
-		$game->addToPlayedCards($newCard);
- 		echo json_encode($res); // returns true
+if  ($_SESSION['id'] !== $game->getWinner()) {
 
-	} elseif ($playable == true) {
+  if  ($_SESSION['id'] === $game->getPlayerTurn()) {
 
-		$game->addToPlayedCards($newCard);
- 		echo json_encode($res); // returns false
+    $isCrazyEights = $game->isCrazyEights($newCard);
+    $isPlayable = $game->showPlayedCard()->isPlayable($newCard);
+    $res = ["eight" => $isCrazyEights, "playable" => $isPlayable];
+    $eight = $res['eight'];
+    $playable = $res['playable'];
 
-	} else {
-		echo json_encode($res);
-	}
+  	if ($eight == true) {
+  		$game->addToPlayedCards($newCard);
+   		echo json_encode($res); // returns true
+
+  	} elseif ($playable == true) {
+
+  		$game->addToPlayedCards($newCard);
+   		echo json_encode($res); // returns false
+
+  	} else {
+  		echo json_encode($res);
+  	}
+
+   } else {
+    $res = ["eight" => false, "playable" => false];
+    echo json_encode($res);
+  }
+
+
+
+} else {
+  $res = ["eight" => false, "playable" => false];
+  echo json_encode($res);
+}
 
 	$str = serialize($game);
 	file_put_contents("gamedata.dat", $str);
