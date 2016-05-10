@@ -31,13 +31,13 @@ if  ($_SESSION['id'] !== $game->getWinner()) {
 
   	if ($eight == true || $playable == true) {
       $game->addToPlayedCards($newCard);
-      $game->removeFromHand($newCard);
+      $game->getPlayer($_SESSION["id"])->removeFromHand($newCard);
       echo json_encode($res); // returns true
     } else {
   		echo json_encode($res);
   	}
 
-   } else {
+  } else {
     $res = ["eight" => false, "playable" => false];
     echo json_encode($res);
   }

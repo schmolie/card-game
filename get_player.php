@@ -14,7 +14,7 @@
   $game->startGame();
 
   //$sessionId = $_SESSION['id'] ;
-  $cards = $game -> getHandFor(0);
+  $cards = $game -> getHandFor($_SESSION['id']);
   $hand = [];
   foreach ($cards as $card) {
     $hand[] = $card->getPublic();
@@ -30,10 +30,10 @@
 
   // saveState() ??? --- frysa och tyna
   // inte frysa i game i index vid refresh startas ett nytt game
-  // get_player är en hand av kort. 
-  // För att plocka ett kort 
+  // get_player är en hand av kort.
+  // För att plocka ett kort
 
-  // spara id och namn i sessionerna 
+  // spara id och namn i sessionerna
   // $deck = $_SESSION['deck'];
 
 ?>

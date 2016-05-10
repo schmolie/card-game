@@ -64,7 +64,7 @@ if (session_id() === "" ) {
 
 		function isSame($c) {
 
-			return ($c->getSuit() === $this->suit && $c->getRank() === $this->rank);
+			return ($c->getSuit() === $this->suit && $c->getRank() == $this->rank);
 
 		}
 /*
