@@ -9,31 +9,7 @@ if (session_id() === "" ) {
 		public $playedCards = [];
 		public $deck;
 		private $gameState;
-		// state = unstartade
-		// winner = none
-		// turn =
-    //public $name;
 
-
-/*
-			{
-				"playedCard: {
-					"rank": 4,
-					"suit": 4,
-					"value": 4,
-				},
-				"winner": "none" | id
-				"turn": 2
-
-        json-metod
-			}
-
-			// playCard
-			*/
-
-    // (startGame?) gameState = not started
-    // not enough players and then change to started when there is 4 players
-    // detta hämtas i game_get_started.php
 
 		function __construct(){
 			$this->gameState = new stdClass;
