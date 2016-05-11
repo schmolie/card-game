@@ -52,9 +52,9 @@ if (session_id() === "" ) {
     }
 
 		function addToPlayedCards($card) {
-      $this->gameState->winner = $this->endGame();
-      $this->nextPlayer();
-			$this->playedCards[] = $card;
+	      $this->gameState->winner = $this->endGame();
+	      $this->nextPlayer();
+		  $this->playedCards[] = $card;
 		}
 
 		function isCrazyEights($card) {
