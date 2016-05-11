@@ -19,7 +19,7 @@ $playerId = $_SESSION["id"];
 
 $card1 = new Card( $suit, $rank, $value);
 
-$game -> getPlayer($playerId) -> dealCard($card1);
+$game -> getPlayer($playerId) -> addToHand($card1);
 
 echo json_encode($game->getHandFor($playerId));
 

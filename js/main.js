@@ -58,7 +58,7 @@
 
 				var newSuit;
 
-				if (cardData.rank == 8) {
+				if (cardData.rank == 8 && data.turn == true) {  //************
 					newSuit = prompt('choose suit', '');
 				}
 
@@ -130,7 +130,7 @@
 
 						var newSuit;
 
-						if (v.rank == 8) {
+						if (v.rank == 8 && data.turn == true) {     //***********
 							newSuit = prompt('choose suit', '');
 						}
 
