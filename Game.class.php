@@ -12,27 +12,23 @@ if (session_id() === "" ) {
 		public $suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
 		public $suit = null;
 
-
-
 		function __construct(){
 			$this->gameState = new stdClass;
 			$this->gameState->state = 'unstarted'; // ????
 			$this->gameState->winner = null;
 			$this->gameState->turn = 0;
-
 			$this->deck = new Deck;
 			$this->playedCards[] = $this->deck->topCard();
-
 		}
 
     public function endGame(){
-      $index=0;
-       foreach ($this->players as $player){
-          if (count($player->getHand()) == 0){
-            return $index;
-          }
-       }
-       return null;
+	    $index=0;
+	     	foreach ($this->players as $player){
+	        if (count($player->getHand()) == 0){
+	          return $index;
+	        }
+	     }
+	    return null;
     }
 
     function getWinner(){
@@ -69,7 +65,6 @@ if (session_id() === "" ) {
 		//place_card.php
 		function changeSuit($suit){
 			$this->suit = $suit;
-
 		}
 
 		function getNewSuit() {
@@ -111,12 +106,9 @@ if (session_id() === "" ) {
 			return $this->gameState;
 		}
 
-
-
 		function addToHand($card){
 			return $this->addToHand($card);
 		}
-
 
 		function getPlayer($id) {
 			return $this->players[$id];
@@ -126,6 +118,7 @@ if (session_id() === "" ) {
 			$this->playedCards[] = $card;
 			// return card object
 		}
+		
     // hämtar korten som står överst på kortleken.
 		function showPlayedCard(){
 			$length = count($this->playedCards);

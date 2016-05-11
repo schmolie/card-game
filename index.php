@@ -60,10 +60,8 @@ spl_autoload_register(function($classname) {
  	<img id="backside" class="card backside" src="cards/backsidecard.png">
  	<img id="topcard" class="card" src="cards/backsidecard.png">
  	<div class="hand"></div>
- 	<div class="statusmsgs">It's not playable</div>
-
+ 	<div class="statusmsgs"></div>
 </section>
-
 
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
