@@ -4,12 +4,22 @@
 		$( '#topcard' ).replaceWith('<img id="topcard" class="card" src="'+ filePath +'">');
 	}
 
+	$('.suits').on('click', function(){
+
+	});
+
+	function chooseSuit(){
+		$('.suits').show();
+
+	}
+
 	function addToHand(data) {
 		var imgElem = $('<img class="card" src="'+ data.filePath +'">').appendTo('.hand');
 		imgElem.click(function(ev) {
 			$.getJSON("place_card.php?suit=" + data.suit + "&rank=" + data.rank + "&value=" + data.value, function(isPlayable){
 				if (isPlayable.eight === true || isPlayable.playable === true) {
 					replaceTopCard(data.filePath);
+					chooseSuit();
 				}
 			});
 		});
@@ -28,10 +38,10 @@
 	// Card from deck:
 	$('body').on('click', '.backside', function(){
 		$.getJSON("get_card.php", function(cardData) {
-			/*var newSuit;
+			var newSuit;
 			if (cardData.rank == 8) {
 				newSuit = prompt('choose suit', '');
-			}*/
+			} // ********
 			$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value, function(playableData){
 				// Place card to deck:
 				if (playableData.eight === true || playableData.playable === true) {

@@ -54,12 +54,12 @@ if (session_id() === "" ) {
 		}
 
 		function isCrazyEights($card) {
-      if($card->getRank() == 8) {
+			if($card->getRank() == 8) {
       	//$this->playedCards[] = $card;
-      	return true;
-      } else {
-      	return false;
-      }
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		//place_card.php
