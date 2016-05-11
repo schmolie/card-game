@@ -21,6 +21,15 @@
 			return array_pop($this->deck);
 		}
 
+		function replaceDeck($newDeck) {
+			$this->deck=$newDeck;
+		}
+
+		function getSizeOfDeck() {
+			$deckLength = count($this->deck);
+			return $deckLength;
+		}
+
 		function showTopCard() {
 			$length = count($this->deck);
 			return $this->deck[$length - 1];

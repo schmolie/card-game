@@ -94,6 +94,17 @@ if (session_id() === "" ) {
       return FALSE;
 		}
 
+		function shuffledDeck() {
+			if ($this->deck->getSizeOfDeck() == 0) {
+				$playedTopCard = array_pop($this->playedCards);
+				shuffle($this->playedCards);
+				$this->deck->replaceDeck($this->playedCards);
+				$this->playedCards = [];
+				$this->playedCards[] =  $playedTopCard;
+			}
+		}
+
+
 		function getHandFor($id) {
 			return $this->players[$id]->getHand();
 		}

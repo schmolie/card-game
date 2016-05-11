@@ -15,6 +15,8 @@ $game = unserialize($str);
 
 
 $topcard = $game -> getDeck() -> topCard();
+$game->shuffledDeck();
+
 // $player = $game->getPlayer(0)->dealCard($topcard);
 echo json_encode($topcard);
 
