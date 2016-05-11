@@ -52,6 +52,7 @@ if (session_id() === "" ) {
 		}
 
 		function isPlayable($card) {
+
 			// this kommer vara topcard i detta fallet.-->playedcard i game.classe.php
 			if ($card->getSuit() == $this->suit){
 				return true;

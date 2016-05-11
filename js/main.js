@@ -28,6 +28,10 @@
 	// Card from deck:
 	$('body').on('click', '.backside', function(){
 		$.getJSON("get_card.php", function(cardData) {
+			/*var newSuit;
+			if (cardData.rank == 8) {
+				newSuit = prompt('choose suit', '');
+			}*/
 			$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value, function(playableData){
 				// Place card to deck:
 				if (playableData.eight === true || playableData.playable === true) {
@@ -64,6 +68,10 @@
 			/*if (data.turn === true ) {
 				$('body').on('click', '.backside', function(){
 					$.getJSON("get_card.php", function(cardData) {
+						var newSuit;
+							if (cardData.rank == 8 && data.turn == true) {
+								newSuit = prompt('choose suit', '');
+							}
 						$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value, function(playableData){
 							// Place card to deck:
 							if (playableData.eight === true || playableData.playable === true) {
@@ -83,6 +91,10 @@
 			data.hand.forEach(function(v){
 				var imgEl = $('<img class="card" src="'+ v.filePath +'">');
 				imgEl.click(function(ev) {
+					var newSuit;
+					if (v.rank == 8 && data.turn == true) {  
+						newSuit = prompt('choose suit', '');
+					}
 					$.getJSON("place_card.php?suit=" + v.suit + "&rank=" + v.rank + "&value=" + v.value, function(isPlayable){
 						if (data.turn === true) {
 							if (isPlayable.eight === true || isPlayable.playable === true) {

@@ -11,7 +11,10 @@ spl_autoload_register(function($classname) {
 $str = file_get_contents('gamedata.dat');
 $game = unserialize($str);
 
-
+if ($game == false) {
+	echo '';
+	die();
+}
 
 // vem som har vunnit
 // vems tur?
@@ -20,7 +23,8 @@ $card = $game->showPlayedCard();
 $hand = $game->getHandFor($_SESSION["id"]);
 $turn = $game->getPlayerTurn() == $_SESSION["id"];
 $winner = $game->getWinner() === $_SESSION["id"];
-$res = ["playedCard" => $card, "hand" => $hand, "turn" => $turn, "winner" => $winner, 'id' => $_SESSION["id"]];
+$newSuit = $game->getNewSuit();
+$res = ["playedCard" => $card, "hand" => $hand, "turn" => $turn, "winner" => $winner, 'id' => $_SESSION["id"], 'newSuit' => $newSuit];
 
 
 echo json_encode($res);
