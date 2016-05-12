@@ -51,7 +51,8 @@ body {
 }
 
 .statusmsgs,
-.suitsMsg
+.suitsMsg,
+.points
  {
 	display: none;
 }

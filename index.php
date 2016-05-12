@@ -61,6 +61,8 @@ spl_autoload_register(function($classname) {
  	<div class="hand"></div>
  	<div class="statusmsgs"></div>
  	<div class="suitsMsg"></div>
+ 	<div class="points"></div>
+
 </section>
 
 	<script src="js/jquery.js"></script>
