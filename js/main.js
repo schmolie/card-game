@@ -1,17 +1,17 @@
 (function() {
 
-	var yourTurn = "<div class='statusmsgs'>It's your turn</div>";
+	var yourTurn = "<div class='turnMsg'>It's your turn</div>";
 	var notYourTurn = "<div class='statusmsgs'>It's not your turn</div>";
 	var notPlayable = "<div class='statusmsgs'>It's not playable</div>";
   var hearts = "<div class='suitsMsg'>You have to play with Hearts</div>";
   var spades = "<div class='suitsMsg'>You have to play with Spades</div>";
   var clubs = "<div class='suitsMsg'>You have to play with Clubs</div>";
   var diamonds = "<div class='suitsMsg'>You have to play with Diamonds</div>";
-  var winner = "<div class='statusmsgs'>YOU WON!</div>";
-  var loser = "<div class='statusmsgs'>YOU LOST!</div>";
+  var winner = "<div class='statusmsgs'>GAME OVER, YOU WON!</div>";
+  var loser = "<div class='statusmsgs'>GAME OVER, YOU LOST!</div>";
 
   function finalPoints(points){
-     return "<div class='points'>your points " + points + "</div>";
+     return "<div class='points'>Your points: " + points + "</div>";
   }
 
 
@@ -79,6 +79,7 @@
 			if (cardData.rank == 8) {
 				newSuit = prompt('choose suit', '');
 
+     }
 
 			$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value + "&changeSuit=" + newSuit, function(playableData){
 				// Place card to deck:
@@ -141,8 +142,8 @@
 
 			if (data.hand.length > 0) {
 				if (data.turn === true) {
-					$('.statusmsgs').replaceWith(yourTurn);
-			    $('.statusmsgs').show();
+					$('.turnMsg').replaceWith(yourTurn);
+			    $('.turnMsg').show().delay(1000).fadeOut();
 				} else {
 					$('.statusmsgs').replaceWith(notYourTurn);
 				  $('.statusmsgs').show().delay(2000).fadeOut();
@@ -157,7 +158,10 @@
 			}
       else if (data.winner !== null && data.winner === false){
 				$('.statusmsgs').replaceWith(loser);
-				$('.statusmsgs').show();
+				$('.statusmsgs').show().delay(1000).fadeOut();
+				$('.turnMsg').replaceWith('');
+				$('.turnMsg').show();
+
 			}
 
 		});
