@@ -28,7 +28,7 @@ if (session_id() === "" ) {
 	     	foreach ($this->players as $player){
 	        if (count($player->getHand()) == 0){
 	        	$this->finalPoints($index);
-	          return $index;   
+	          return $index;
 	        }
 	        $index++;
 	     }
@@ -149,7 +149,7 @@ if (session_id() === "" ) {
 			$this->playedCards[] = $card;
 			// return card object
 		}
-		
+
     // hämtar korten som står överst på kortleken.
 		function showPlayedCard(){
 			$length = count($this->playedCards);

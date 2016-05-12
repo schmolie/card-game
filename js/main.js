@@ -7,6 +7,12 @@
   var spades = "<div class='suitsMsg'>You have to play with Spades</div>";
   var clubs = "<div class='suitsMsg'>You have to play with Clubs</div>";
   var diamonds = "<div class='suitsMsg'>You have to play with Diamonds</div>";
+  var winner = "<div class='statusmsgs'>YOU WON!</div>";
+  var loser = "<div class='statusmsgs'>YOU LOST!</div>";
+
+  function finalPoints(points){
+     return "<div class='points'>your points " + points + "</div>";
+  }
 
 
 	function replaceTopCard(filePath) {
@@ -39,7 +45,6 @@
 			case "Hearts":
 				$('.suitsMsg').replaceWith(hearts);
 	  		$('.suitsMsg').show().delay(2000).fadeOut();
-
 			break;
 			case "Spades":
 				$('.suitsMsg').replaceWith(spades);
@@ -72,9 +77,8 @@
 		$.getJSON("get_card.php", function(cardData) {
 			var newSuit;
 			if (cardData.rank == 8) {
-				//newSuit = prompt('choose suit', '');
-				suitsMsg();
-			} // ********
+				newSuit = prompt('choose suit', '');
+			}
 			$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value + "&changeSuit=" + newSuit, function(playableData){
 				// Place card to deck:
 				if (playableData.eight === true || playableData.playable === true) {
@@ -143,6 +147,18 @@
 				  $('.statusmsgs').show().delay(2000).fadeOut();
         }
 			}
+
+			if(data.winner === true){
+        $('.statusmsgs').replaceWith(winner);
+				$('.statusmsgs').show();
+				$('.points').replaceWith(finalPoints(data.finalPoints));
+				$('.points').show();
+			}
+
+			//  else {
+			// 	$('.statusmsgs').replaceWith(loser);
+			// 	$('.statusmsgs').show();
+			// }
 
 		});
 	}
