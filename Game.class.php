@@ -12,11 +12,13 @@ if (session_id() === "" ) {
 		public $suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
 		public $suit = null;
 
+
 		function __construct(){
 			$this->gameState = new stdClass;
 			$this->gameState->state = 'unstarted'; // ????
 			$this->gameState->winner = null;
 			$this->gameState->turn = 0;
+			$this->gameState->finalPoints = 0;
 			$this->deck = new Deck;
 			$this->playedCards[] = $this->deck->topCard();
 		}
@@ -25,11 +27,29 @@ if (session_id() === "" ) {
 	    $index=0;
 	     	foreach ($this->players as $player){
 	        if (count($player->getHand()) == 0){
-	          return $index;
+	        	$this->finalPoints($index);
+	          return $index;   
 	        }
+	        $index++;
 	     }
 	    return null;
     }
+
+    function finalPoints($winner) {
+    	$index=0;
+    	foreach($this->players as $player) {
+    		if($winner != $index) {
+    			foreach($player->getHand() as $card){
+    				$this->gameState->finalPoints += $card->getValue();
+    			}
+    		}
+    		$index++;
+    	}
+
+    }
+    function getFinalPoints(){
+     	return $this->gameState->finalPoints;
+     }
 
     function getWinner(){
       return $this->gameState->winner;

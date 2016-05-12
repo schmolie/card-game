@@ -24,7 +24,8 @@ $hand = $game->getHandFor($_SESSION["id"]);
 $turn = $game->getPlayerTurn() == $_SESSION["id"];
 $winner = $game->getWinner() === $_SESSION["id"];
 $newSuit = $game->getNewSuit();
-$res = ["playedCard" => $card, "hand" => $hand, "turn" => $turn, "winner" => $winner, 'id' => $_SESSION["id"], 'newSuit' => $newSuit];
+$finalPoints = $game->getFinalPoints();
+$res = ["playedCard" => $card, "hand" => $hand, "turn" => $turn, "winner" => $winner, 'id' => $_SESSION["id"], 'newSuit' => $newSuit, 'finalPoints' => $finalPoints];
 
 
 echo json_encode($res);
