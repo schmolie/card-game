@@ -72,8 +72,8 @@
 		$.getJSON("get_card.php", function(cardData) {
 			var newSuit;
 			if (cardData.rank == 8) {
-				//newSuit = prompt('choose suit', '');
-				suitsMsg();
+				newSuit = prompt('choose suit', '');
+				//suitsMsg();
 			} // ********
 			$.getJSON("place_card.php?suit=" + cardData.suit + "&rank=" + cardData.rank + "&value=" + cardData.value + "&changeSuit=" + newSuit, function(playableData){
 				// Place card to deck:

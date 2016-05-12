@@ -1,6 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
 
 body {
-	padding-top: 100px;
+	padding-top: 50px;
+	background-color: #f2f2f2;
+	font-family: "Open Sans", sans-serif;
+	font-size: 20px;
+	color: white;
 }
 
 .card {
@@ -14,12 +20,26 @@ body {
 	text-align: center;
 }
 
-.container,
+.container {
+	background-color: #7BB400;
+	border: 5px solid #03672A;
+	border-radius: 10px;
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 25px 0;
+}
+
+
 .hand {
 	max-width: 1200px;
 	margin: 0 auto;
 	text-align: center;
-	padding: 10px 0;
+	margin: 20px 0;
+}
+
+.topCard{
+	margin:20px 0;
 }
 
 .hand .card {
@@ -35,3 +55,33 @@ body {
  {
 	display: none;
 }
+
+.paddButtom {
+	margin: 0 auto;
+	padding-left: 100px;
+}
+
+button {
+
+	margin-right: 10px;
+	padding: 10px 15px;
+	background-color: #908aad;
+	color: white;
+	border: 1px solid #86598a;
+	border-radius: 5px;
+	font-size: 14px;
+	text-transform: uppercase;
+
+}
+
+button:hover {
+	background-color: #50325f;
+}
+
+h2{
+	color: #262626;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+

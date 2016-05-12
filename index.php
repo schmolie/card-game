@@ -46,16 +46,15 @@ spl_autoload_register(function($classname) {
 	<input type="submit" value="send">
 </form>
  -->
+<h2>Swedish Rummy Card Game</h2>
 
-<div>
+<div class="paddButtom">
 	<button id="join">Join game</button>
-</div>
-<div>
 	<button id="deal">Deal cards</button>
-</div>
-<div>
 	<button id="killswitch">Kill it</button>
 </div>
+<br />
+<br />
 <section class="container">
  	<img id="backside" class="card backside" src="cards/backsidecard.png">
  	<img id="topcard" class="card" src="cards/backsidecard.png">
