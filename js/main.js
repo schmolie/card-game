@@ -154,11 +154,10 @@
 				$('.points').replaceWith(finalPoints(data.finalPoints));
 				$('.points').show();
 			}
-
-			//  else {
-			// 	$('.statusmsgs').replaceWith(loser);
-			// 	$('.statusmsgs').show();
-			// }
+      else if (data.winner !== null && data.winner === false){
+				$('.statusmsgs').replaceWith(loser);
+				$('.statusmsgs').show();
+			}
 
 		});
 	}

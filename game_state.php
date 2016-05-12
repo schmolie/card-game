@@ -22,7 +22,7 @@ if ($game == false) {
 $card = $game->showPlayedCard();
 $hand = $game->getHandFor($_SESSION["id"]);
 $turn = $game->getPlayerTurn() == $_SESSION["id"];
-$winner = $game->getWinner() === $_SESSION["id"];
+$winner = $game->getWinner() === null ? null : $game->getWinner() === $_SESSION["id"];
 $newSuit = $game->getNewSuit();
 $finalPoints = $game->getFinalPoints();
 $res = ["playedCard" => $card, "hand" => $hand, "turn" => $turn, "winner" => $winner, 'id' => $_SESSION["id"], 'newSuit' => $newSuit, 'finalPoints' => $finalPoints];
